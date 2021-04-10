@@ -1,0 +1,14 @@
+{
+  "name": "chunder-server-node",
+  "version": "1.0.0",
+  "description": "node server for final project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jason miller and chad comiter",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
