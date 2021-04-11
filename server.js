@@ -43,6 +43,8 @@ app.use(cors({
     origin: 'http://localhost:3000', //<-- Change to whatever the client is
     credentials: true
 }))
+
+//Allows Express to Parse Session Info
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(session({
@@ -93,9 +95,12 @@ app.post('/register', (req, res) => {
       }
   });
 });
+app.get('/profile', (req, res) => {
+    
+})
 
 app.get('/user', (req, res) => {
-    
+    res.send(req.user); //req.user stores the entire user obejct once authenticated
 })
 
 
