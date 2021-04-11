@@ -107,5 +107,5 @@ app.get('/user', (req, res) => {
 //------------------------------------ END OF ROUTES --------------------------------------//
 require('./controllers/trail-controller')(app)
 
-//Placeholder for now, remove line below eventually
+//Placeholder for now, change to whatever our permanent hosting solution is eventually.
 app.listen(4000)
