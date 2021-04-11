@@ -2,13 +2,29 @@
   "name": "chunder-server-node",
   "version": "1.0.0",
   "description": "node server for final project",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devStart": "nodemon server.js"
   },
-  "author": "jason miller and chad comiter",
+  "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "ejs": "^2.7.4",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.12.3",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "react-dev-utils": "^11.0.4",
+    "react-scripts": "4.0.3"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0",
+    "nodemon": "^2.0.7"
   }
 }
