@@ -10,6 +10,7 @@ const cors = require('cors');
 
 const app = express();
 const User = require('./models/user');
+const Mountain = require('./models/mountain');
 //creates the mongoDb
 mongoose.connect("mongodb+srv://chunderadmin:justsendit@cluster0.lrrzr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", 
     {
@@ -78,6 +79,32 @@ app.post('/login', (req, res, next) => {
         }
     })(req, res, next);
 })
+app.post('/mountains', (req, res) => {
+    var newMountain = new Mountain(req.body);
+    newMountain.save()
+        .then(item => {
+            res.send("Mountain saved to DB");
+        })
+        .catch(err => {
+            res.status(400).send("Unable to save mountain");
+        })
+})
+//Find All
+app.get('/mountains', (req, res) => {
+    Mountain.find({},(err, mountains) => {
+        if(err) throw err;
+        res.send(mountains);
+    })
+})
+
+//Find One
+app.get('/mountain', (req, res) => {
+    Mountain.findOne({}, (err, mountain) => {
+        if(err) throw err;
+        res.send(mountain.name);
+    })
+})
+
 app.post('/register', (req, res) => {
   User.findOne({ username: req.body.username }, async (err,doc) => {
       //Checks the db for a user with the username, if exists, returns that it exists.
