@@ -1,9 +1,13 @@
-const trails = require('./trails.json')
+const trailDao = require('../daos/trail-dao')
 
-const findAllTrails = () => {
-    return trails
-}
+const findAllTrailsForMountain = (mid) => trailDao.findAllTrailsForMountain(mid)
+const findTrailById = (tid) => trailDao.findTrailById(tid);
+const deleteTrail = (tid) => trailDao.deleteTrail(tid);
+const updateTrail = (tid) => trailDao.updateTrail(tid);
 
 module.exports = {
-    findAllTrails
+    findAllTrailsForMountain,
+    findTrailById,
+    deleteTrail,
+    updateTrail
 }

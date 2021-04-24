@@ -10,7 +10,7 @@ const cors = require('cors');
 
 const app = express();
 const User = require('./models/user-model');
-const Mountain = require('./models/mountain-model');
+const mountainModel = require('./models/mountain-model');
 //creates the mongoDb
 mongoose.connect("mongodb+srv://chunderadmin:justsendit@cluster0.lrrzr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", 
     {
@@ -82,14 +82,11 @@ app.post('/login', (req, res, next) => {
 
 //-------------MOUNTAINS-------//
 app.post('/mountains', (req, res) => {
-    var newMountain = new Mountain(req.body);
+    var newMountain = new mountainModel(req.body);
+    console.log(newMountain);
     newMountain.save()
-        .then(item => {
-            res.send("Mountain saved to DB");
-        })
-        .catch(err => {
-            res.status(400).send("Unable to save mountain");
-        })
+    .then(console.log('saved'))
+    
 })
 
 app.post('/register', (req, res) => {
@@ -115,9 +112,7 @@ app.get('/user', (req, res) => {
 });
 
 
-//------------------------------------ END OF ROUTES --------------------------------------//
 require('./controllers/mountain-controller')(app)
-require('./controllers/trail-controller')(app)
 
 
 //Placeholder for now, change to whatever our permanent hosting solution is eventually.

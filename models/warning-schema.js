@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 
 const warningSchema = new mongoose.Schema({
-    _id: String,
     name: String,
     votes: Number,
     trail: [{

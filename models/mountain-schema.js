@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const mountainSchema = mongoose.Schema({
-    _id: String,
     name: String,
     trails: [{
         type: mongoose.Schema.Types.ObjectId,
