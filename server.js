@@ -9,8 +9,8 @@ const bodyParser = require('body-parser');
 const cors = require('cors'); 
 
 const app = express();
-const User = require('./models/user');
-const Mountain = require('./models/mountain');
+const User = require('./models/user-model');
+const Mountain = require('./models/mountain-model');
 //creates the mongoDb
 mongoose.connect("mongodb+srv://chunderadmin:justsendit@cluster0.lrrzr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", 
     {
@@ -79,6 +79,8 @@ app.post('/login', (req, res, next) => {
         }
     })(req, res, next);
 })
+
+//-------------MOUNTAINS-------//
 app.post('/mountains', (req, res) => {
     var newMountain = new Mountain(req.body);
     newMountain.save()
@@ -88,21 +90,6 @@ app.post('/mountains', (req, res) => {
         .catch(err => {
             res.status(400).send("Unable to save mountain");
         })
-})
-//Find All
-app.get('/mountains', (req, res) => {
-    Mountain.find({},(err, mountains) => {
-        if(err) throw err;
-        res.send(mountains);
-    })
-})
-
-//Find One
-app.get('/mountain', (req, res) => {
-    Mountain.findOne({}, (err, mountain) => {
-        if(err) throw err;
-        res.send(mountain.name);
-    })
 })
 
 app.post('/register', (req, res) => {
@@ -122,17 +109,16 @@ app.post('/register', (req, res) => {
       }
   });
 });
-app.get('/profile', (req, res) => {
-    
-})
 
 app.get('/user', (req, res) => {
-    res.send(req.user); //req.user stores the entire user obejct once authenticated
-})
+    res.json(req.user); //req.user stores the entire user obejct once authenticated
+});
 
 
 //------------------------------------ END OF ROUTES --------------------------------------//
+require('./controllers/mountain-controller')(app)
 require('./controllers/trail-controller')(app)
+
 
 //Placeholder for now, change to whatever our permanent hosting solution is eventually.
 app.listen(4000)
