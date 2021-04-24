@@ -80,15 +80,6 @@ app.post('/login', (req, res, next) => {
     })(req, res, next);
 })
 
-//-------------MOUNTAINS-------//
-app.post('/mountains', (req, res) => {
-    var newMountain = new mountainModel(req.body);
-    console.log(newMountain);
-    newMountain.save()
-    .then(console.log('saved'))
-    
-})
-
 //-------------TRAILS----------//
 app.post('/trails', (req, res) => {
     var newTrail = new trailModel(req.body);
@@ -123,6 +114,7 @@ app.get('/user', (req, res) => {
 
 require('./controllers/mountain-controller')(app)
 require('./controllers/trail-controller')(app)
+require('./controllers/warning-controller')(app)
 
 //Placeholder for now, change to whatever our permanent hosting solution is eventually.
 app.listen(4000)

@@ -6,7 +6,7 @@ const trailSchema = new mongoose.Schema({
     trailName: String,
     trailRating: String,
     trailStatus: Boolean,
-    mountain: {
+    mountainId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Mountain'
     },
