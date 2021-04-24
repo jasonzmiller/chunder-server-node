@@ -89,6 +89,15 @@ app.post('/mountains', (req, res) => {
     
 })
 
+//-------------TRAILS----------//
+app.post('/trails', (req, res) => {
+    var newTrail = new trailModel(req.body);
+    console.log(newTrail);
+    newTrail.save()
+        .then(console.log('saved'));
+})
+
+
 app.post('/register', (req, res) => {
   User.findOne({ username: req.body.username }, async (err,doc) => {
       //Checks the db for a user with the username, if exists, returns that it exists.
@@ -113,7 +122,7 @@ app.get('/user', (req, res) => {
 
 
 require('./controllers/mountain-controller')(app)
-
+require('./controllers/trail-controller')(app)
 
 //Placeholder for now, change to whatever our permanent hosting solution is eventually.
 app.listen(4000)

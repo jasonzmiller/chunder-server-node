@@ -22,7 +22,7 @@ module.exports = (app) => {
         mountainService.updateMountain(req.params['mid'])
             .then(mountain => res.json(mountain)))
     app.delete('/mountains/:mid', (req, res) =>
-    mountainService.updateMountain(req.params['mid'])
+    mountainService.deleteMountain(req.params['mid'])
         .then(mountain => res.json(mountain)))
 }
 
