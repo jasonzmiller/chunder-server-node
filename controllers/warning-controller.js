@@ -15,8 +15,16 @@ module.exports = (app) => {
     })
     app.put('/mountains/:mid/trails/:tid/warnings/:wid', (req, res) => 
         warningService.updateWarning(req.params['wid'])
-            .then(warning => res.json(warning)))
+            .then(() => {
+                res.status(201).json({
+                    message: 'Warning Updated!'
+                });
+            }))
     app.delete('/mountains/:mid/trails/:tid/warnings/:wid', (req, res) =>
         warningService.deleteWarning(req.params['wid'])
-            .then(warning => res.json(warning)))
+            .then(() => {
+                res.status(200).json({
+                    message: 'Warning Deleted!'
+                })
+            }))
 }

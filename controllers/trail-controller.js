@@ -15,8 +15,16 @@ module.exports = (app) => {
     })
     app.put('/mountains/:mid/trails/:tid', (req, res) => 
         trailService.updateTrail(req.params['tid'])
-            .then(trail => res.json(trail)))
+            .then(() => {
+                res.status(201).json({
+                    message: 'Trail Updated!'
+                });
+            }))
     app.delete('/mountains/:mid/trails/:tid', (req, res) =>
         trailService.deleteTrail(req.params['tid'])
-            .then(trail => res.json(trail)))
+            .then(() => {
+                res.status(200).json({
+                    message: 'Trail Deleted!'
+                })
+            }))
 }
