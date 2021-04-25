@@ -6,21 +6,21 @@ module.exports = (app) => {
         trailService.findAllTrailsForMountain(req.params['mid'])
             .then(trails => res.json(trails)))
     app.get('/mountains/:mid/trails/:tid', (req, res) =>
-        trailService.findTrailById(req.params['tid']
-            .then(trail => res.json(trail))))
+        trailService.findTrailById(req.params['tid'])
+            .then(trail => res.json(trail)))
     app.post('/trails', (req, res) => {
         var newTrail = new trailModel(req.body);
         newTrail.save()
             .then(console.log('saved'))
     })
-    app.put('/mountains/:mid/trails/:tid', (req, res) => 
+    app.put('/trails/:tid', (req, res) => 
         trailService.updateTrail(req.params['tid'])
             .then(() => {
                 res.status(201).json({
                     message: 'Trail Updated!'
                 });
             }))
-    app.delete('/mountains/:mid/trails/:tid', (req, res) =>
+    app.delete('/trails/:tid', (req, res) =>
         trailService.deleteTrail(req.params['tid'])
             .then(() => {
                 res.status(200).json({

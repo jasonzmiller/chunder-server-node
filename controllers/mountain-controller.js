@@ -10,9 +10,11 @@ module.exports = (app) => {
     app.get('/mountains/:mid', (req, res) =>
         mountainService.findMountainById(req.params['mid'])
             .then(mountain => res.json(mountain)))
+
     app.get('/mountains/:mountainName', (req, res) => 
         mountainService.findMountainByName(req.params['mountainName'])
             .then(mountain => res.json(mountain)))
+
     app.post('/mountains', (req, res) => {
         var newMountain = new mountainModel(req.body);
         newMountain.save()

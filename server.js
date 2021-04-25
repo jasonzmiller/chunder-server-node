@@ -10,7 +10,6 @@ const cors = require('cors');
 
 const app = express();
 const User = require('./models/user-model');
-const mountainModel = require('./models/mountain-model');
 //creates the mongoDb
 mongoose.connect("mongodb+srv://chunderadmin:justsendit@cluster0.lrrzr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", 
     {
@@ -80,13 +79,6 @@ app.post('/login', (req, res, next) => {
     })(req, res, next);
 })
 
-//-------------TRAILS----------//
-app.post('/trails', (req, res) => {
-    var newTrail = new trailModel(req.body);
-    console.log(newTrail);
-    newTrail.save()
-        .then(console.log('saved'));
-})
 
 
 app.post('/register', (req, res) => {

@@ -13,14 +13,14 @@ module.exports = (app) => {
         newWarning.save()
             .then(console.log('saved'));
     })
-    app.put('/mountains/:mid/trails/:tid/warnings/:wid', (req, res) => 
+    app.put('/warnings/:wid', (req, res) => 
         warningService.updateWarning(req.params['wid'])
             .then(() => {
                 res.status(201).json({
                     message: 'Warning Updated!'
                 });
             }))
-    app.delete('/mountains/:mid/trails/:tid/warnings/:wid', (req, res) =>
+    app.delete('/warnings/:wid', (req, res) =>
         warningService.deleteWarning(req.params['wid'])
             .then(() => {
                 res.status(200).json({

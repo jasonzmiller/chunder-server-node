@@ -1,15 +1,14 @@
 const mongoose = require('mongoose');
 
 const trailSchema = new mongoose.Schema({
-    resort: String,
-    section: String,
-    trailName: String,
-    trailRating: String,
-    trailStatus: Boolean,
     mountainId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Mountain'
     },
+    trailName: String,
+    section: String,
+    trailRating: String,
+    trailStatus: String,
     warnings: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Warning'
