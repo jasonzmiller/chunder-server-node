@@ -80,6 +80,9 @@ app.post('/login', (req, res, next) => {
 })
 
 
+app.get('/:uid/mountains', (req, res) => 
+    User.findOne({ _id: req.params['uid']}, {mountains: 1})
+        .then(mountains => res.json(mountains)))
 
 app.post('/register', (req, res) => {
   User.findOne({ username: req.body.username }, async (err,doc) => {
