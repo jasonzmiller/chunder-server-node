@@ -8,6 +8,7 @@ module.exports = (app) => {
     app.get('/mountains/:mid/trails/:tid/warnings/:wid', (req, res) =>
         warningService.findWarningById(req.params['wid']
             .then(warning => res.json(warning))))
+            
     app.post('/warnings', (req, res) => {
         var newWarning = new warningModel(req.body);
         newWarning.save()
