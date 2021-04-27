@@ -79,7 +79,9 @@ app.post('/login', (req, res, next) => {
     })(req, res, next);
 })
 
-
+app.get('/profile/:uid', (req, res) => {
+    User.findOne({ _id: req.params['uid']}).then(user => res.json(user))
+})
 
 app.get('/:uid/mountains', (req, res) => 
     User.findOne({ _id: req.params['uid']}, {mountains: 1})
