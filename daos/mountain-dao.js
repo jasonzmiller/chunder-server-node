@@ -7,13 +7,21 @@ const findMountainByName = (mountainName) => mountainModel.findOne({name: mounta
 const updateMountain = (mid, updateToMountain) => mountainModel.updateOne({_id: mid}, updateToMountain);
 const deleteMountain = (mid) => mountainModel.deleteOne({_id: mid});
 
-const addMountainToUser = (mid, uid) => mountainModel.update(
-    {_id: uid},
-    {
-        $push: {"mountains": mid}
-    }
-)
+const addMountainToUser = (mid, uid) => {
+    console.log('This reached the DAO');
+    console.log(mid);
+    console.log(uid);
 
+    userModel.findByIdAndUpdate(
+        uid,
+        {$push: {"mountains": mid}},
+        {safe: true, upsert: true, new: true},
+        function(err, model){
+            console.log(err);
+        }
+        
+    )
+}
 
 module.exports = {
     findAllMountains,
