@@ -27,14 +27,11 @@ module.exports = (app) => {
                     message: 'Mountain Updated!'
                 });
             }))
-    app.put('/profile/:uid/mountains/:mid', (req, res) => 
-        mountainService.addMountainToUser(req.params)
-            .then(() => {
-                res.status(201).json({
-                    message: 'Added Mountain to User!'
-                })
-            })
-    )
+    app.post('/:uid/mountains', (req, res) => {
+        const mid = req.body.mid;
+        const uid = req.body.uid;
+        mountainService.addMountainToUser(mid, uid)
+    })
     app.delete('/mountains/:mid', (req, res) =>
     mountainService.deleteMountain(req.params['mid'])
         .then(() => {
