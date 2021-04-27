@@ -1,9 +1,17 @@
-const trailModel = require('../models/trail-model');
+const trailModel = require('../models/trail/trail-model');
 
 const findAllTrailsForMountain = (mid) => trailModel.find({mountainId: mid});
 const findAllTrails = () => trailModel.find();
 const findTrailById = (tid) => trailModel.findById(tid);
-const updateTrail = (tid) => trailModel.updateOne({_id: tid});
+
+const updateTrail = (tid, updateToTrail) => trailModel.updateOne({_id: tid}, updateToTrail);
+
 const deleteTrail = (tid) => trailModel.deleteOne({_id: tid});
 
-module.exports = { findTrailById, updateTrail, deleteTrail, findAllTrailsForMountain, findAllTrails }
+module.exports = {
+    findAllTrailsForMountain,
+    findAllTrails,
+    findTrailById,
+    updateTrail,
+    deleteTrail
+}

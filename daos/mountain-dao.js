@@ -1,10 +1,12 @@
-const mountainModel = require('../models/mountain-model');
+const mountainModel = require('../models/mountain/mountain-model');
 
 const findAllMountains = () => mountainModel.find();
 const findMountainById = (mid) => mountainModel.findById(mid);
 const findMountainByName = (mountainName) => mountainModel.findOne({name: mountainName});
-const updateMountain = (mid) => mountainModel.updateOne({_id: mid});
+
+const updateMountain = (mid, updateToMountain) => mountainModel.updateOne({_id: mid}, updateToMountain);
 const deleteMountain = (mid) => mountainModel.deleteOne({_id: mid});
+
 const addMountainToUser = (mid, uid) => mountainModel.update(
     {_id: uid},
     {
@@ -13,4 +15,11 @@ const addMountainToUser = (mid, uid) => mountainModel.update(
 )
 
 
-module.exports = { findAllMountains, findMountainById, findMountainByName, updateMountain, deleteMountain }
+module.exports = {
+    findAllMountains,
+    findMountainById,
+    findMountainByName,
+    updateMountain,
+    deleteMountain,
+    addMountainToUser
+}

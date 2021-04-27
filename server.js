@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors'); 
 
 const app = express();
-const User = require('./models/user-model');
+const User = require('./models/user/user-model');
 //creates the mongoDb
 mongoose.connect("mongodb+srv://chunderadmin:justsendit@cluster0.lrrzr.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", 
     {
