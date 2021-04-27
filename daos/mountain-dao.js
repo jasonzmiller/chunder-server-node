@@ -14,13 +14,15 @@ const addMountainToUser = (mid, uid) => {
     console.log(mid);
     console.log(uid);
 
-    userModel.findOneAndUpdate(
-        {"_id": uid},
+    userModel.findByIdAndUpdate(
+        uid,
         {$push: {"mountains": mid}},
-        {safe: true, upsert: true, new: true}
+        {safe: true, upsert: true, new: true},
+        function(err, model){
+            console.log(err);
+        }
         
     )
-
 
 }
 
