@@ -1,4 +1,6 @@
 const mountainModel = require('../models/mountain/mountain-model');
+const userModel = require('../models/user/user-model');
+
 
 const findAllMountains = () => mountainModel.find();
 const findMountainById = (mid) => mountainModel.findById(mid);

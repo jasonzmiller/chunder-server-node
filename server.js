@@ -79,6 +79,11 @@ app.post('/login', (req, res, next) => {
     })(req, res, next);
 })
 
+app.get('/logout', (req, res) => {
+    req.logout();
+    res.redirect('/');
+});
+
 app.get('/profile/:uid', (req, res) => {
     User.findOne({ _id: req.params['uid']}).then(user => res.json(user))
 })
