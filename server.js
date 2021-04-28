@@ -121,4 +121,4 @@ require('./controllers/trail-controller')(app)
 require('./controllers/warning-controller')(app)
 
 //Placeholder for now, change to whatever our permanent hosting solution is eventually.
-app.listen(4000)
+app.listen(process.env.PORT || 4000)
