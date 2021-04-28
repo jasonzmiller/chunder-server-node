@@ -120,5 +120,12 @@ require('./controllers/mountain-controller')(app)
 require('./controllers/trail-controller')(app)
 require('./controllers/warning-controller')(app)
 
+
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 4000;
+}
+app.listen(port);
+
 //Placeholder for now, change to whatever our permanent hosting solution is eventually.
-app.listen(process.env.PORT || 4000)
+// app.listen(process.env.PORT || 4000)
