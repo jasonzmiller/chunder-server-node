@@ -4,7 +4,7 @@ const userModel = require('../models/user/user-model');
 
 const findAllMountains = () => mountainModel.find();
 const findMountainById = (mid) => mountainModel.findById(mid);
-const findMountainByName = (mountainName) => mountainModel.findOne({name: mountainName});
+const findMountainByName = (mountainName) => mountainModel.findOne({name: mountainName})
 
 const updateMountain = (mid, updateToMountain) => mountainModel.updateOne({_id: mid}, updateToMountain);
 const deleteMountain = (mid) => mountainModel.deleteOne({_id: mid});

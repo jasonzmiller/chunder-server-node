@@ -13,8 +13,8 @@ module.exports = (app) => {
         mountainService.findMountainById(req.params['mid'])
             .then(mountain => res.json(mountain)))
 
-    // find mountian by name
-    app.get('/mountains/:mountainName', (req, res) => 
+    // find mountain by name
+    app.get('/mountains/name/:mountainName', (req, res) =>
         mountainService.findMountainByName(req.params['mountainName'])
             .then(mountain => res.json(mountain)))
 
@@ -22,8 +22,8 @@ module.exports = (app) => {
     // create new mountain
     app.post('/mountains', (req, res) => {
         var newMountain = new mountainModel(req.body);
-        newMountain.save()
-            .then(console.log('saved'))
+        newMountain.save().then(createdMountain => res.send(createdMountain))
+            /* .then(console.log('saved')) */
     })
 
     /*--------------------------PUT-----------------------------------*/
