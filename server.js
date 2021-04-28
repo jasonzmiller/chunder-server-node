@@ -103,6 +103,7 @@ app.post('/register', (req, res) => {
           const newUser = new User({
               username: req.body.username,
               password: hashedPassword,
+              isAdmin: req.body.isAdmin
           });
           await newUser.save();
           res.send("User Created");
